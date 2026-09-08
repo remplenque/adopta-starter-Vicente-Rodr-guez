@@ -5,6 +5,16 @@
       <p>{{ cantidadPerros() }} peluditos buscando un hogar</p>
     </ion-title>
 
+    @if (correo(); as usuario) {
+      <ion-note slot="end" class="sesion">{{ usuario }}</ion-note>
+    }
+
+    <ion-buttons slot="end">
+      <ion-button (click)="salir()" aria-label="Cerrar sesión">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
     <ion-segment [(ngModel)]="filtro">
       <ion-segment-button value="default">
         <ion-label>Todos</ion-label>
@@ -30,23 +40,9 @@
     @for (p of perrosFiltrados(); track p.id) {
       
       <ion-col size="6">
-        <ion-button fill="clear" class="ion-no-padding" [routerLink]="['/detalle', p.id]">
-        <ion-card>
-          
-            @if (!p.adoptado) {
-              <ion-badge color="success"><ion-icon name="checkmark-circle"></ion-icon> Disponible</ion-badge>
-            }@else{
-              <ion-badge color="dark"><ion-icon name="close-circle"></ion-icon> Adoptado</ion-badge>
-            }
-            <img [src]="p.foto" />
-            <ion-card-header>
-              <ion-card-title>{{ p.nombre }}</ion-card-title>
-              <ion-card-subtitle>{{ p.raza }}<br>  --- <br> {{ p.edad }} año(s)</ion-card-subtitle>
-              
-            </ion-card-header>
-          
-        </ion-card>
-</ion-button>
+        <ion-button fill="clear" class="ion-no-padding enlace-tarjeta" [routerLink]="['/detalle', p.id]">
+          <app-tarjeta-perro [perro]="p"></app-tarjeta-perro>
+        </ion-button>
       </ion-col>
       
     } @empty {

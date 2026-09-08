@@ -79,4 +79,16 @@ export class PerrosService {
   agregar(perro: Perro): void {
     this.perros.update((lista) => [...lista, perro]);
   }
+
+  /** Reemplaza los datos del perro que tenga el mismo id. */
+  editar(perro: Perro): void {
+    this.perros.update((lista) =>
+      lista.map((p) => (p.id === perro.id ? { ...p, ...perro } : p))
+    );
+  }
+
+  /** Saca de la lista al perro indicado. */
+  eliminar(id: number): void {
+    this.perros.update((lista) => lista.filter((p) => p.id !== id));
+  }
 }

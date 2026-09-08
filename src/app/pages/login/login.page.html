@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Adopta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="bienvenida">
+    <ion-icon name="paw"></ion-icon>
+    <h1>Hola de nuevo</h1>
+    <p>Entra para ver a los peluditos que buscan hogar.</p>
+  </div>
+
+  <ion-list>
+    <ion-item>
+      <ion-input label="Correo" labelPlacement="stacked" type="email"
+                 placeholder="Ej: demo@adopta.cl" [(ngModel)]="correo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Clave" labelPlacement="stacked" type="password"
+                 placeholder="Tu clave" [(ngModel)]="clave"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  @if (error()) {
+    <ion-text color="danger"><p class="error">{{ error() }}</p></ion-text>
+  }
+
+  <ion-button expand="block" class="ion-margin-top"
+              [disabled]="!formularioValido()" (click)="entrar()">
+    <ion-icon slot="start" name="log-in-outline"></ion-icon>
+    Entrar
+  </ion-button>
+
+  <ion-button expand="block" fill="clear" routerLink="/registro">
+    ¿No tienes cuenta? Regístrate
+  </ion-button>
+
+  <div class="aviso-demo">
+    <p>
+      Cuenta de prueba: <strong>{{ demo.correo }}</strong> / <strong>{{ demo.clave }}</strong>
+    </p>
+    <ion-button size="small" fill="outline" (click)="usarDemo()">
+      Usar cuenta demo
+    </ion-button>
+    <p class="nota">
+      Las cuentas que registres viven solo en memoria: al recargar la página
+      se pierden y queda únicamente esta.
+    </p>
+  </div>
+
+</ion-content>

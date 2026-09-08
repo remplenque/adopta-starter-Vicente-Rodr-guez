@@ -1,7 +1,14 @@
-<!-- TODO: arma la tarjeta del perro.
-     Tienes todos sus datos en `perro`: nombre, raza, edad, foto, adoptado…
+<ion-card [class.adoptado]="perro.adoptado">
+  @if (perro.adoptado) {
+    <ion-badge color="dark"><ion-icon name="close-circle"></ion-icon> Adoptado</ion-badge>
+  } @else {
+    <ion-badge color="success"><ion-icon name="checkmark-circle"></ion-icon> Disponible</ion-badge>
+  }
 
-     Varios caminos llevan a Roma: una opción es un ion-card con la foto y un
-     badge de estado (Adoptado / Disponible), pero puedes hacerlo a tu manera.
+  <img [src]="perro.foto" [alt]="perro.nombre" />
 
-     ¿Necesitas una referencia? Mira la galería de adopta-app. -->
+  <ion-card-header>
+    <ion-card-title>{{ perro.nombre }}</ion-card-title>
+    <ion-card-subtitle>{{ perro.raza }} &middot; {{ perro.edad }}</ion-card-subtitle>
+  </ion-card-header>
+</ion-card>

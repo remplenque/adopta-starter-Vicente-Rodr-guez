@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/login" text="Volver"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear cuenta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <div class="bienvenida">
+    <ion-icon name="person-add-outline"></ion-icon>
+    <p>Regístrate para adoptar y publicar peluditos.</p>
+  </div>
+
+  <ion-list>
+    <ion-item>
+      <ion-input label="Correo" labelPlacement="stacked" type="email"
+                 placeholder="Ej: tu@correo.cl" [(ngModel)]="correo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Clave" labelPlacement="stacked" type="password"
+                 placeholder="Mínimo 4 caracteres" [(ngModel)]="clave"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Repetir clave" labelPlacement="stacked" type="password"
+                 placeholder="La misma clave" [(ngModel)]="repetirClave"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  @if (error()) {
+    <ion-text color="danger"><p class="error">{{ error() }}</p></ion-text>
+  }
+
+  <ion-button expand="block" class="ion-margin-top"
+              [disabled]="!formularioValido()" (click)="registrar()">
+    Crear cuenta
+  </ion-button>
+
+</ion-content>

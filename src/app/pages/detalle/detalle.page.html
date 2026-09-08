@@ -8,6 +8,9 @@
       <ion-button (click)="alternarFavorito()" aria-label="Marcar como favorito">
         <ion-icon slot="icon-only" [name]="favorito() ? 'heart' : 'heart-outline'"></ion-icon>
       </ion-button>
+      <ion-button (click)="editar()" aria-label="Editar peludito">
+        <ion-icon slot="icon-only" name="create-outline"></ion-icon>
+      </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -84,6 +87,11 @@
         Quiero adoptar a {{ p.nombre }}
       </ion-button>
     }
+
+    <ion-button expand="block" fill="outline" color="danger" (click)="eliminar()">
+      <ion-icon slot="start" name="trash-outline"></ion-icon>
+      Eliminar a {{ p.nombre }}
+    </ion-button>
 
   } @else {
 

@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/" text="Cancelar"></ion-back-button>
     </ion-buttons>
-    <ion-title>Nuevo Perrito</ion-title>
+    <ion-title>{{ editando ? 'Editar Perrito' : 'Nuevo Perrito' }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -78,7 +78,7 @@
 
   <ion-button expand="block" class="ion-margin-top"
               [disabled]="!formularioValido()" (click)="guardar()">
-    Guardar
+    {{ editando ? 'Guardar cambios' : 'Guardar' }}
   </ion-button>
 
 </ion-content>

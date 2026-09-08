@@ -1,0 +1,43 @@
+/* Correo de quien entró: texto plano, a la izquierda del botón de salir. */
+ion-note.sesion {
+  align-self: center;
+  max-width: 45vw;
+  padding-right: 4px;
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* El ion-button solo hace de zona táctil: la tarjeta ocupa toda la columna. */
+ion-button.enlace-tarjeta {
+  --padding-start: 0;
+  --padding-end: 0;
+  width: 100%;
+  height: auto;
+  margin: 0 0 12px;
+  text-transform: none;
+}
+
+ion-button.enlace-tarjeta::part(native) {
+  width: 100%;
+  padding: 0;
+}
+
+app-tarjeta-perro {
+  display: block;
+  width: 100%;
+}
+
+/* Mismo estado vacío que usa el detalle */
+.estado-vacio {
+  width: 100%;
+  text-align: center;
+  padding-top: 60px;
+  color: var(--ion-color-medium);
+
+  ion-icon {
+    font-size: 48px;
+    margin-bottom: 8px;
+  }
+}
