@@ -14,3 +14,24 @@
 /* Dejamos el tema CLARO para que se vea como los celulares de los slides.
    (Descomenta para seguir el modo del sistema.) */
 /* @import "@ionic/angular/css/palettes/dark.system.css"; */
+
+/* Encabezados */
+ion-title {
+  font-weight: 700;
+}
+
+/* Bajada dentro del título (la usa la galería para el contador) */
+ion-title p {
+  margin: 2px 0 0;
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.6;
+}
+
+ion-toolbar ion-segment {
+  padding: 0 12px 6px;
+}
+
+ion-card-title {
+  font-weight: 700;
+}

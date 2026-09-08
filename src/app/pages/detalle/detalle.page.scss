@@ -1,0 +1,78 @@
+/* La galería usa Ionic tal cual, así que aquí solo van los ajustes
+   que Ionic no trae de fábrica. */
+
+ion-card {
+  position: relative;
+}
+
+/* Badge de estado montado sobre la foto (igual idea que la galería) */
+ion-card > ion-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+ion-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 12px;
+
+  ion-chip {
+    margin: 0;
+  }
+}
+
+.ficha {
+  --ion-grid-padding: 0;
+  padding: 0;
+  margin-bottom: 12px;
+  text-align: center;
+
+  ion-col {
+    border: 1px solid var(--ion-color-light-shade);
+    border-radius: 8px;
+    padding: 8px 4px;
+    margin: 0 3px;
+  }
+
+  .etiqueta {
+    display: block;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    color: var(--ion-color-medium);
+    margin-bottom: 2px;
+  }
+
+  strong {
+    font-size: 14px;
+    color: var(--ion-text-color);
+  }
+}
+
+.descripcion {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* Mismo nombre de clase que usa la galería para su estado vacío */
+.estado-vacio {
+  text-align: center;
+  padding-top: 60px;
+  color: var(--ion-color-medium);
+
+  ion-icon {
+    font-size: 48px;
+    margin-bottom: 8px;
+  }
+}

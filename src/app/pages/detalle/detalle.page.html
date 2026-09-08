@@ -1,8 +1,97 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Detalle</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text="Adopta"></ion-back-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button (click)="alternarFavorito()" aria-label="Marcar como favorito">
+        <ion-icon slot="icon-only" [name]="favorito() ? 'heart' : 'heart-outline'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+
+  @if (perro(); as p) {
+
+    <ion-card>
+      @if (p.adoptado) {
+        <ion-badge color="dark"><ion-icon name="checkmark-circle"></ion-icon> Adoptado</ion-badge>
+      } @else {
+        <ion-badge color="success"><ion-icon name="paw"></ion-icon> Disponible</ion-badge>
+      }
+
+      <img [src]="p.foto" [alt]="p.nombre" />
+
+      <ion-card-header>
+        <ion-card-title>{{ p.nombre }}</ion-card-title>
+        <ion-card-subtitle>{{ p.raza }} &middot; {{ p.sexo }} &middot; {{ p.edad }}</ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <div class="chips">
+          @if (p.vacunada) {
+            <ion-chip color="success" outline="true">
+              <ion-icon name="checkmark-circle"></ion-icon>
+              <ion-label>Vacunada</ion-label>
+            </ion-chip>
+          }
+          <ion-chip color="primary" outline="true">
+            <ion-icon name="resize"></ion-icon>
+            <ion-label>{{ p.tamano }}</ion-label>
+          </ion-chip>
+          @if (p.caracter) {
+            <ion-chip color="primary" outline="true">
+              <ion-icon name="flash"></ion-icon>
+              <ion-label>{{ p.caracter }}</ion-label>
+            </ion-chip>
+          }
+        </div>
+
+        <ion-grid class="ficha">
+          <ion-row>
+            <ion-col size="3">
+              <span class="etiqueta">SEXO</span>
+              <strong>{{ p.sexo }}</strong>
+            </ion-col>
+
+            <ion-col size="3">
+              <span class="etiqueta">TAMAÑO</span>
+              <strong>{{ p.tamano }}</strong>
+            </ion-col>
+
+            <ion-col size="3">
+              <span class="etiqueta">EDAD</span>
+              <strong>{{ p.edad }}</strong>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <p class="descripcion">{{ p.descripcion }}</p>
+      </ion-card-content>
+    </ion-card>
+
+    @if (p.adoptado) {
+      <ion-button expand="block" color="medium" (click)="alternarAdopcion()">
+        <ion-icon slot="start" name="checkmark-circle"></ion-icon>
+        Ya tiene familia
+      </ion-button>
+    } @else {
+      <ion-button expand="block" color="primary" (click)="alternarAdopcion()">
+        <ion-icon slot="start" name="home-outline"></ion-icon>
+        Quiero adoptar a {{ p.nombre }}
+      </ion-button>
+    }
+
+  } @else {
+
+    <div class="estado-vacio">
+      <ion-icon name="search-outline"></ion-icon>
+      <p>No encontramos a este peludito.</p>
+    </div>
+
+  }
+
 </ion-content>

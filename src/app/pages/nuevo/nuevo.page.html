@@ -1,8 +1,84 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>Nuevo perrito</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text="Cancelar"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Nuevo Perrito</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
+
+  
+
+  <ion-list>
+    <ion-item>
+      <ion-input label="Nombre" labelPlacement="stacked" placeholder="Ej: Rocky"
+                 [(ngModel)]="nombre"></ion-input>
+    </ion-item>
+
+    
+
+    <ion-item>
+      <ion-input label="Edad" labelPlacement="stacked" placeholder="Ej: 2 años"
+                 [(ngModel)]="edad"></ion-input>
+    </ion-item>
+
+    <br>
+
+    <ion-segment [(ngModel)]="tipo">
+    <ion-segment-button value="Perro">
+      <ion-label>Perro</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Gato">
+      <ion-label>Gato</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Otro">
+      <ion-label>Otro</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+    <br>
+
+    <ion-item>
+      <ion-input label="Raza" labelPlacement="stacked" placeholder="Ej: Labrador"
+                 [(ngModel)]="raza"></ion-input>
+    </ion-item>
+
+    
+
+    <ion-item>
+      <ion-input label="Sexo" labelPlacement="stacked" placeholder="Ej: Hembra"
+                 [(ngModel)]="sexo"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-toggle [(ngModel)]="vacunada">Vacuna</ion-toggle>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Tamaño" labelPlacement="stacked" placeholder="Ej: Mediano"
+                 [(ngModel)]="tamano"></ion-input>
+    </ion-item>
+
+    
+
+    <ion-item>
+      <ion-textarea label="Descripción" labelPlacement="stacked"
+                    placeholder="Cómo es, qué le gusta..."
+                    [autoGrow]="true" [(ngModel)]="descripcion"></ion-textarea>
+    </ion-item>
+
+    <ion-item>
+      <ion-input label="Foto URL" labelPlacement="stacked"
+                 placeholder="Ej: https://example.com/image.jpg"
+                 [(ngModel)]="foto"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-button expand="block" class="ion-margin-top"
+              [disabled]="!formularioValido()" (click)="guardar()">
+    Guardar
+  </ion-button>
+
 </ion-content>
